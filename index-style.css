@@ -1,0 +1,43 @@
+/* Generics  */
+img{
+width: 100%;
+height: 100%;
+}
+
+/* Utils  */
+
+
+/* Carousel item  */
+.carousel{
+    position: relative;
+}
+
+.carousel-item{
+ height: 300px;
+}
+
+.carousel-item img{
+    border-radius: 20px;
+    display: none;
+}
+
+.carousel-item img.active{
+    display: block;
+}
+
+.bi{
+    filter: invert(1);
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+}
+
+#chevron-up{
+    top: 50px;
+}
+
+#chevron-down{
+    bottom: -250px;
+}
