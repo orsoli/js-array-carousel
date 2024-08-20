@@ -76,3 +76,19 @@ chvronUpElement.addEventListener('click', function(){
     imageElements[currentActiveIndex].classList.add('active')
     thumbnailImgElements[currentActiveIndex].classList.add('active')
 })
+
+// Thumbnails click event
+for(let i = 0; i < thumbnailImgElements.length; i++){
+    const thumbImg = thumbnailImgElements[i] // Save each thumbanils img
+    // Add click event
+    thumbImg.addEventListener('click', function(){
+    //Remove the current active class in img element
+    imageElements[currentActiveIndex].classList.remove('active')
+    thumbnailImgElements[currentActiveIndex].classList.remove('active')
+    // the currentActiveIndex is the current img index
+    currentActiveIndex = i
+    // Add the 'active'class in the previous img element
+    imageElements[currentActiveIndex].classList.add('active')
+    thumbnailImgElements[currentActiveIndex].classList.add('active')
+    })
+}
