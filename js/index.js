@@ -10,6 +10,8 @@
 // Milestone 2
     // Remove static elements from DOM and create the dinamically process by JS
 
+// Bonus 1: Create the infinite loop in click events
+
 // --- Preparation phase
 // Create image sources array
 const sources = ['./img/01.webp','./img/02.webp','./img/03.webp','./img/04.webp','./img/05.webp']
@@ -31,27 +33,37 @@ for(let i = 0; i < sources.length; i++){
 }
 
 // Retrieve this image element already created from DOM to add the active class
-const imageElement = document.querySelectorAll('.carousel img')
+const imageElements = document.querySelectorAll('.carousel img')
 // Create the current variable index
 let currentActiveIndex = 0;
-imageElement[currentActiveIndex].classList.add('active')
+imageElements[currentActiveIndex].classList.add('active')
 
 // Create click events for elements chevron up/down
 // Chevron-down
 chvronDownElement.addEventListener('click', function(){
     //Remove the current active class in img element
-    imageElement[currentActiveIndex].classList.remove('active')
+    imageElements[currentActiveIndex].classList.remove('active')
     //Increment currentActiveIndex to go back in next image 
     currentActiveIndex++;
+    // Add the infinite circle for down click event
+        // Check if is last img
+    if(currentActiveIndex === imageElements.length){
+        currentActiveIndex = 0; // If is last img next click go first img
+    }
     // Add the 'active'class in the previous img element
-    imageElement[currentActiveIndex].classList.add('active')
+    imageElements[currentActiveIndex].classList.add('active')
 })
 // Chevron-up
 chvronUpElement.addEventListener('click', function(){
     //Remove the current active class in img element
-    imageElement[currentActiveIndex].classList.remove('active')
+    imageElements[currentActiveIndex].classList.remove('active')
     //Decrement currentActiveIndex to go back in previous image 
     currentActiveIndex--;
+    // Add the infinite circle for up click event
+        // Check if is first img
+    if(currentActiveIndex < 0){
+        currentActiveIndex = imageElements.length - 1; // If is first img next click go last img
+    }
     // Add the 'active'class in the previous img element
-    imageElement[currentActiveIndex].classList.add('active')
+    imageElements[currentActiveIndex].classList.add('active')
 })
