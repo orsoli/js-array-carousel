@@ -11,6 +11,7 @@
     // Remove static elements from DOM and create the dinamically process by JS
 
 // Bonus 1: Create the infinite loop in click events
+// Bonus 2: Create thumbnails of all the images, where the thumbnail equivalent to the active image should be highlighted
 
 // --- Preparation phase
 // Create image sources array
@@ -19,6 +20,7 @@ const sources = ['./img/01.webp','./img/02.webp','./img/03.webp','./img/04.webp'
 const chvronUpElement = document.getElementById('chevron-up')
 const chvronDownElement = document.getElementById('chevron-down')
 const carouselItemElement = document.getElementById('carousel-item')
+const thumbnailsElement = document.getElementById('thumbnails')
 
 
 // --- Processing phase
@@ -30,19 +32,23 @@ for(let i = 0; i < sources.length; i++){
     image.src = src // Add the src attribute with 'src' value for img element already created
     image.alt = `image-${i + 1}` // add alt attribute for img element
     carouselItemElement.appendChild(image) // imageElement append like child of carouselItemElement
+    thumbnailsElement.appendChild(image.cloneNode(true))
 }
 
-// Retrieve this image element already created from DOM to add the active class
+// Retrieve this image element already created from DOM
 const imageElements = document.querySelectorAll('.carousel img')
+const thumbnailImgElements = document.querySelectorAll('#thumbnails img')
 // Create the current variable index
 let currentActiveIndex = 0;
 imageElements[currentActiveIndex].classList.add('active')
+thumbnailImgElements[currentActiveIndex].classList.add('active')
 
 // Create click events for elements chevron up/down
 // Chevron-down
 chvronDownElement.addEventListener('click', function(){
     //Remove the current active class in img element
     imageElements[currentActiveIndex].classList.remove('active')
+    thumbnailImgElements[currentActiveIndex].classList.remove('active')
     //Increment currentActiveIndex to go back in next image 
     currentActiveIndex++;
     // Add the infinite circle for down click event
@@ -52,11 +58,13 @@ chvronDownElement.addEventListener('click', function(){
     }
     // Add the 'active'class in the previous img element
     imageElements[currentActiveIndex].classList.add('active')
+    thumbnailImgElements[currentActiveIndex].classList.add('active')
 })
 // Chevron-up
 chvronUpElement.addEventListener('click', function(){
     //Remove the current active class in img element
     imageElements[currentActiveIndex].classList.remove('active')
+    thumbnailImgElements[currentActiveIndex].classList.remove('active')
     //Decrement currentActiveIndex to go back in previous image 
     currentActiveIndex--;
     // Add the infinite circle for up click event
@@ -66,4 +74,5 @@ chvronUpElement.addEventListener('click', function(){
     }
     // Add the 'active'class in the previous img element
     imageElements[currentActiveIndex].classList.add('active')
+    thumbnailImgElements[currentActiveIndex].classList.add('active')
 })
