@@ -15,8 +15,26 @@ const images = document.querySelectorAll('.carousel img')
 
 // Create the current variable index
 let currentActiveIndex = 0;
-// Add the active class in current img
-const image = images[currentActiveIndex]
-image.classList.add('active')
+images[currentActiveIndex].classList.add('active')
 
 // --- Processing phase
+// Create click events for elements chevron up/down
+
+// Chevron-down
+chvronDownElement.addEventListener('click', function(){
+    //Remove the current active class in img element
+    images[currentActiveIndex].classList.remove('active')
+    //Increment currentActiveIndex to go back in next image 
+    currentActiveIndex++;
+    // Add the 'active'class in the previous img element
+    images[currentActiveIndex].classList.add('active')
+})
+// Chevron-up
+chvronUpElement.addEventListener('click', function(){
+    //Remove the current active class in img element
+    images[currentActiveIndex].classList.remove('active')
+    //Decrement currentActiveIndex to go back in previous image 
+    currentActiveIndex--;
+    // Add the 'active'class in the previous img element
+    images[currentActiveIndex].classList.add('active')
+})
