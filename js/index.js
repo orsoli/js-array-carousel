@@ -49,7 +49,7 @@ chvronDownElement.addEventListener('click', function(){
     //Remove the current active class in img element
     imageElements[currentActiveIndex].classList.remove('active')
     thumbnailImgElements[currentActiveIndex].classList.remove('active')
-    //Increment currentActiveIndex to go back in next image 
+    //Increment currentActiveIndex to go in next image 
     currentActiveIndex++;
     // Add the infinite circle for down click event
         // Check if is last img
